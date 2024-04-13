@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Manrope", sans-serif;
+}
+
+.hero-section {
+  /* background: url("/hero-image.png"); */
+  background-color: aqua;
+}
+
+/* sizing of map container */
+.leaflet-container {
+  height: 100%;
+}
+
+/* scroll bar hidden */
+.hidden-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/*  Menu */
+.dropDownProfileMenu {
+  position: absolute;
+  right: 3.3rem;
+  top: 6rem;
+  width: 220px;
+  border: 1px solid #297dd0;
+  border-radius: 8px;
+}
+
+.dropDownProfileMenu::before {
+  content: "";
+  position: absolute;
+  top: -0.66rem;
+  right: 1.5rem;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: white;
+  border-left: 1px solid #297dd0;
+  border-top: 1px solid #297dd0;
+}
+
+.dropDownNavMenu {
+  position: absolute;
+  right: 8.2rem;
+  top: 6.1rem;
+  width: 260px;
+  border: 1px solid #297dd0;
+  border-radius: 8px;
+}
+
+.dropDownNavMenu::before {
+  content: "";
+  position: absolute;
+  top: -0.66rem;
+  right: 1.7rem;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: white;
+  border-left: 1px solid #297dd0;
+  border-top: 1px solid #297dd0;
+}
+
+.deleteMessageMenu::before {
+  content: "";
+  position: absolute;
+  top: -0.66rem;
+  right: 1rem;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: #050b22;
+}
+
+/* Map marker  */
+
+.custom-div-icon-size-small {
+  height: 10px !important;
+  width: 10px !important;
+  background-color: blue;
+  border-radius: 100%;
+}
+.custom-div-icon-size-medium {
+  height: 15px !important;
+  width: 15px !important;
+  background-color: blue;
+  border-radius: 100%;
+}
+.custom-div-icon-size-large {
+  height: 25px !important;
+  width: 25px !important;
+  background-color: blue;
+  border-radius: 100%;
+}
+
+.custom-div-icon-size-highlight {
+  height: 20px !important;
+  width: 20px !important;
+  background-color: red;
+  border-radius: 100%;
+}
