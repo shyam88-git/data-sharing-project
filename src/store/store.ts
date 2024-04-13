@@ -1,21 +1,22 @@
-import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./rootReducer";
-import { authApi } from "./modules/auth/authApi";
-import { dynamicFormApi } from "./modules/dynamic-form/dynamicFormApi";
-import { gisFormApi } from "./modules/gis-file/gisFileApi";
-import { chartApi } from "./modules/chart/chartApi";
-import { ExcelFileApi } from "./modules/excel/excelFileApi";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { AuthSlice } from "./features/auth/authSlice";
+import { rootApi } from "./root.api";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { setupListeners } from "@reduxjs/toolkit/query";
+const rootReducer = combineReducers({
+  auth: AuthSlice.reducer,
+  [rootApi.reducerPath]: rootApi.reducer,
+});
 
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(authApi.middleware)
-      .concat(dynamicFormApi.middleware)
-      .concat(gisFormApi.middleware)
-      .concat(chartApi.middleware)
-      .concat(ExcelFileApi.middleware),
+    getDefaultMiddleware().concat(rootApi.middleware),
 });
 
+
+export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+setupListeners(store.dispatch);
